@@ -1,0 +1,121 @@
+name: Build and run with CMakePresets.json, no parameter matrix
+
+on:
+  push: 
+    branches: [master, develop]
+  pull_request:
+    branches: [master, develop]
+
+jobs:
+
+  build-on-ubuntu:
+    runs-on: ubuntu-latest
+      # singleConfig:
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Install Ninja
+      uses: seanmiddleditch/gha-setup-ninja@master
+
+    - name: Tool versions
+      shell: bash
+      run: | 
+        echo g++ --version
+        g++ --version
+        echo 
+        echo clang++ --version
+        clang++ --version
+        echo 
+        echo cmake --version
+        cmake --version
+        echo 
+        echo ninja --version
+        ninja --version
+
+    - name: CMake configure, build, run --- Windows, Ninja, Gnu, Debug
+      run: |
+        cmake --preset Ninja-Gnu-Debug
+        cmake --build --preset Ninja-Gnu-Debug
+        cmake --build --preset Ninja-Gnu-Debug --target run
+
+    - name: CMake configure, build, run --- Windows, Ninja, Gnu, Release
+      run: |
+        cmake --preset Ninja-Gnu-Release
+        cmake --build --preset Ninja-Gnu-Release
+        cmake --build --preset Ninja-Gnu-Release --target run
+
+
+  build-on-macos:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Install Ninja
+      uses: seanmiddleditch/gha-setup-ninja@master
+
+    - name: Tool versions
+      shell: bash
+      run: | 
+        echo g++ --version
+        g++ --version
+        echo 
+        echo clang++ --version
+        clang++ --version
+        echo 
+        echo cmake --version
+        cmake --version
+        echo 
+        echo ninja --version
+        ninja --version
+
+    - name: CMake configure, build, run --- Windows, Ninja, Clang, Debug
+      run: |
+        cmake --preset Ninja-Clang-Debug
+        cmake --build --preset Ninja-Clang-Debug
+        cmake --build --preset Ninja-Clang-Debug --target run
+
+    - name: CMake configure, build, run --- Windows, Ninja, Clang, Release
+      run: |
+        cmake --preset Ninja-Clang-Release
+        cmake --build --preset Ninja-Clang-Release
+        cmake --build --preset Ninja-Clang-Release --target run
+
+
+  build-on-windows:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Setup MSVC compiler
+      uses: ilammy/msvc-dev-cmd@v1
+
+    - name: Install Ninja
+      uses: seanmiddleditch/gha-setup-ninja@master
+
+    - name: Tool versions
+      shell: bash
+      run: | 
+        echo cl
+        cl
+        echo 
+        echo cmake --version
+        cmake --version
+        echo 
+        echo ninja --version
+        ninja --version
+
+    - name: CMake configure, build, run --- Windows, Ninja, Msvc, Debug
+      run: |
+        cmake --preset Ninja-Msvc-Debug
+        cmake --build --preset Ninja-Msvc-Debug
+        cmake --build --preset Ninja-Msvc-Debug --target run
+
+    - name: CMake configure, build, run --- Windows, Ninja, Msvc, Release
+      run: |
+        cmake --preset Ninja-Msvc-Release
+        cmake --build --preset Ninja-Msvc-Release
+        cmake --build --preset Ninja-Msvc-Release --target run

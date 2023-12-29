@@ -1,0 +1,88 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "StarterProjectNoTests (Debug) Windows",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "windows": {
+                // Adjust the path to the Debug executable (rebuild before debugging!)
+                "program": "${workspaceFolder}/Demo/StarterProject/StarterProjectNoTests/buildNinjaMC/Msvc/buildOut/StarterProject/bin/Debug/StarterProject_d.exe"
+/*
+                "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildMake/Gnu/buildOut/StarterProject/bin/Debug/StarterProject_d.exe"
+                "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildMake/Clang/buildOut/StarterProject/bin/Debug/StarterProject_d.exe"
+                "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildNMake/Msvc/buildOut/StarterProject/bin/Debug/StarterProject_d.exe"
+                "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildNinja/Gnu/buildOut/StarterProject/bin/Debug/StarterProject_d.exe"
+                "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildNinja/Clang/buildOut/StarterProject/bin/Debug/StarterProject_d.exe"
+                "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildNinja/Msvc/buildOut/StarterProject/bin/Debug/StarterProject_d.exe"
+                "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildNinjaMC/Gnu/buildOut/StarterProject/bin/Debug/StarterProject_d.exe"
+                "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildNinjaMC/Clang/buildOut/StarterProject/bin/Debug/StarterProject_d.exe"
+                "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildNinjaMC/Msvc/buildOut/StarterProject/bin/Debug/StarterProject_d.exe"
+                "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildVS/x32/Msvc/buildOut/StarterProject/bin/Debug/StarterProject_d.exe"
+                "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildVS/x64/Msvc/buildOut/StarterProject/bin/Debug/StarterProject_d.exe"
+*/
+            },
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "StarterProjectNoTests (Debug) Linux/Mac",
+            "type": "cppdbg",
+            "request": "launch",
+            // Adjust the path to the Debug executable (rebuild before debugging!)
+            "linux": {
+                "program": "${workspaceFolder}/Demo/StarterProject/StarterProjectNoTests/buildNinjaMC/Gnu/buildOut/StarterProject/bin/Debug/StarterProject_d"
+            },
+            "osx": {
+                "program": "${workspaceFolder}/Demo/StarterProject/StarterProjectNoTests/buildNinjaMC/Clang/buildOut/StarterProject/bin/Debug/StarterProject_d"
+            },
+/*
+            "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildMake/Gnu/buildOut/StarterProject/bin/Debug/StarterProject_d",
+            "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildMake/Clang/buildOut/StarterProject/bin/Debug/StarterProject_d",
+            "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildNMake/Msvc/buildOut/StarterProject/bin/Debug/StarterProject_d",
+            "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildNinja/Gnu/buildOut/StarterProject/bin/Debug/StarterProject_d",
+            "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildNinja/Clang/buildOut/StarterProject/bin/Debug/StarterProject_d",
+            "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildNinja/Msvc/buildOut/StarterProject/bin/Debug/StarterProject_d",
+            "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildNinjaMC/Gnu/buildOut/StarterProject/bin/Debug/StarterProject_d",
+            "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildNinjaMC/Clang/buildOut/StarterProject/bin/Debug/StarterProject_d",
+            "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildNinjaMC/Msvc/buildOut/StarterProject/bin/Debug/StarterProject_d",
+            "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildVS/x32/Msvc/buildOut/StarterProject/bin/Debug/StarterProject_d",
+            "program": "${workspaceFolder}/Cpp/Demo/StarterProject/StarterProjectNoTestst/buildVS/x64/Msvc/buildOut/StarterProject/bin/Debug/StarterProject_d",
+*/
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
