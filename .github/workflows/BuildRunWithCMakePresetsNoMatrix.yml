@@ -10,8 +10,6 @@ jobs:
 
   build-on-ubuntu:
     runs-on: ubuntu-latest
-      # singleConfig:
-
     steps:
     - name: Checkout repo
       uses: actions/checkout@v4
@@ -34,17 +32,27 @@ jobs:
         echo ninja --version
         ninja --version
 
-    - name: CMake configure, build, run --- Windows, Ninja, Gnu, Debug
-      run: |
-        cmake --preset Ninja-Gnu-Debug
-        cmake --build --preset Ninja-Gnu-Debug
-        cmake --build --preset Ninja-Gnu-Debug --target run
+    - run: echo Linux, Ninja, Gnu, Debug
 
-    - name: CMake configure, build, run --- Windows, Ninja, Gnu, Release
-      run: |
-        cmake --preset Ninja-Gnu-Release
-        cmake --build --preset Ninja-Gnu-Release
-        cmake --build --preset Ninja-Gnu-Release --target run
+    - name: "CMake configure: Linux, Ninja, Gnu, Debug"
+      run: cmake --preset Ninja-Gnu-Debug
+      
+    - name: "CMake build: Linux, Ninja, Gnu, Debug"
+      run: cmake --build --preset Ninja-Gnu-Debug
+
+    - name: "CMake run: Linux, Ninja, Gnu, Debug"
+      run: cmake --build --preset Ninja-Gnu-Debug --target run
+
+    - run: echo Linux, Ninja, Gnu, Release
+
+    - name: "CMake configure: Linux, Ninja, Gnu, Release"
+      run: cmake --preset Ninja-Gnu-Release
+      
+    - name: "CMake build: Linux, Ninja, Gnu, Release"
+      run: cmake --build --preset Ninja-Gnu-Release
+
+    - name: "CMake run: Linux, Ninja, Gnu, Release"
+      run: cmake --build --preset Ninja-Gnu-Release --target run
 
 
   build-on-macos:
@@ -71,17 +79,27 @@ jobs:
         echo ninja --version
         ninja --version
 
-    - name: CMake configure, build, run --- Windows, Ninja, Clang, Debug
-      run: |
-        cmake --preset Ninja-Clang-Debug
-        cmake --build --preset Ninja-Clang-Debug
-        cmake --build --preset Ninja-Clang-Debug --target run
+    - run: echo MacOS, Ninja, Clang, Debug
 
-    - name: CMake configure, build, run --- Windows, Ninja, Clang, Release
-      run: |
-        cmake --preset Ninja-Clang-Release
-        cmake --build --preset Ninja-Clang-Release
-        cmake --build --preset Ninja-Clang-Release --target run
+    - name: "CMake configure: Linux, Ninja, Clang, Debug"
+      run: cmake --preset Ninja-Clang-Debug
+      
+    - name: "CMake build: Linux, Ninja, Clang, Debug"
+      run: cmake --build --preset Ninja-Clang-Debug
+
+    - name: "CMake run: Linux, Ninja, Clang, Debug"
+      run: cmake --build --preset Ninja-Clang-Debug --target run
+
+    - run: echo MacOS, Ninja, Clang, Release
+
+    - name: "CMake configure: Linux, Ninja, Clang, Release"
+      run: cmake --preset Ninja-Clang-Release
+      
+    - name: "CMake build: Linux, Ninja, Clang, Release"
+      run: cmake --build --preset Ninja-Clang-Release
+
+    - name: "CMake run: Linux, Ninja, Clang, Release"
+      run: cmake --build --preset Ninja-Clang-Release --target run
 
 
   build-on-windows:
@@ -108,14 +126,24 @@ jobs:
         echo ninja --version
         ninja --version
 
-    - name: CMake configure, build, run --- Windows, Ninja, Msvc, Debug
-      run: |
-        cmake --preset Ninja-Msvc-Debug
-        cmake --build --preset Ninja-Msvc-Debug
-        cmake --build --preset Ninja-Msvc-Debug --target run
+    - run: echo Windows, Ninja, Msvc, Debug
 
-    - name: CMake configure, build, run --- Windows, Ninja, Msvc, Release
-      run: |
-        cmake --preset Ninja-Msvc-Release
-        cmake --build --preset Ninja-Msvc-Release
-        cmake --build --preset Ninja-Msvc-Release --target run
+    - name: "CMake configure: Linux, Ninja, Msvc, Debug"
+      run: cmake --preset Ninja-Msvc-Debug
+      
+    - name: "CMake build: Linux, Ninja, Msvc, Debug"
+      run: cmake --build --preset Ninja-Msvc-Debug
+
+    - name: "CMake run: Linux, Ninja, Msvc, Debug"
+      run: cmake --build --preset Ninja-Msvc-Debug --target run
+
+    - run: echo Windows, Ninja, Msvc, Release
+
+    - name: "CMake configure: Linux, Ninja, Msvc, Release"
+      run: cmake --preset Ninja-Msvc-Release
+      
+    - name: "CMake build: Linux, Ninja, Msvc, Release"
+      run: cmake --build --preset Ninja-Msvc-Release
+
+    - name: "CMake run: Linux, Ninja, Msvc, Release"
+      run: cmake --build --preset Ninja-Msvc-Release --target run
