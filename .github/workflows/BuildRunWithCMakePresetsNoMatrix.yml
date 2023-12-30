@@ -122,13 +122,16 @@ jobs:
 
     - name: CMake build and run --- NinjaMC, Gnu, Debug & Release
       run: |
+        echo CMake configure
         cmake --preset NinjaMC-Gnu
         cmake --build --preset NinjaMC-Gnu --config Debug --target run
         cmake --build --preset NinjaMC-Gnu --config Release --target run
 
     - name: CMake build and run --- NinjaMC, Clang, Debug & Release
       run: |
+        echo CMake configure
         cmake --preset NinjaMC-Clang
+        echo CMake build (debug) and run
         cmake --build --preset NinjaMC-Clang --config Debug --target run
         cmake --build --preset NinjaMC-Clang --config Release --target run
 
@@ -241,9 +244,17 @@ jobs:
 
     - name: CMake build and run --- NinjaMC, Clang, Debug & Release
       run: |
+        echo CMake configure
         cmake --preset NinjaMC-Clang
+        echo CMake build (debug) and run
         cmake --build --preset NinjaMC-Clang --config Debug --target run
         cmake --build --preset NinjaMC-Clang --config Release --target run
+
+    - name: CMake build and run --- Xcode, Clang, Debug & Release
+      run: |
+        cmake --preset Xcode-Clang
+        cmake --build --preset Xcode-Clang --config Debug --target run
+        cmake --build --preset Xcode-Clang --config Release --target run
 
 
   build-on-windows:
@@ -320,7 +331,9 @@ jobs:
 
     - name: CMake build and run --- NinjaMC, Msvc, Debug & Release
       run: |
+        echo CMake configure
         cmake --preset NinjaMC-Msvc
+        echo CMake build (debug) and run
         cmake --build --preset NinjaMC-Msvc --config Debug --target run
         cmake --build --preset NinjaMC-Msvc --config Release --target run
 
@@ -335,3 +348,15 @@ jobs:
     #     echo 
     #     echo CMake build and run (Release)
     #     cmake --build --preset NinjaMC-Msvc --config Release --target run
+
+    - name: CMake build and run --- VSx32, Msvc, Debug & Release
+      run: |
+        cmake --preset VSx32-Msvc
+        cmake --build --preset VSx32-Msvc --config Debug --target run
+        cmake --build --preset VSx32-Msvc --config Release --target run
+
+    - name: CMake build and run --- VSx64, Msvc, Debug & Release
+      run: |
+        cmake --preset VSx64-Msvc
+        cmake --build --preset VSx64-Msvc --config Debug --target run
+        cmake --build --preset VSx64-Msvc --config Release --target run
