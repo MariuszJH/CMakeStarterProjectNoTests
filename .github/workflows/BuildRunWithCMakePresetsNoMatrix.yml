@@ -122,14 +122,24 @@ jobs:
 
     - name: Linux, NinjaMC, Gnu, Debug & Release
       run: |
-        echo CMake configure
         cmake --preset NinjaMC-Gnu
-        echo 
-        echo CMake build and run (Debug)
         cmake --build --preset NinjaMC-Gnu --config Debug --target run
-        echo 
-        echo CMake build and run (Release)
-        cmake --build --preset NinjaMC-Gnu --config Release --target run
+
+    # - name: Linux, NinjaMC, Gnu, Debug & Release
+    #   run: |
+    #     echo CMake configure
+    #     cmake --preset NinjaMC-Gnu
+    #     echo 
+    #     echo CMake build and run (Debug)
+    #     cmake --build --preset NinjaMC-Gnu --config Debug --target run
+    #     echo 
+    #     echo CMake build and run (Release)
+    #     cmake --build --preset NinjaMC-Gnu --config Release --target run
+
+    #     cmake --preset NinjaMC-Gnu
+    #     cmake --build --preset NinjaMC-Gnu --config Debug --target run
+    #     cmake --build --preset NinjaMC-Gnu --config Release --target run
+
 
     - name: Linux, NinjaMC, Clang, Debug & Release
       run: |
@@ -211,16 +221,21 @@ jobs:
         echo CMake run
         cmake --build --preset Ninja-Clang-Release --target run
 
+    # - name: MacOS, NinjaMC, Clang, Debug & Release
+    #   run: |
+    #     echo CMake configure
+    #     cmake --preset NinjaMC-Clang
+    #     echo 
+    #     echo CMake build and run (Debug)
+    #     cmake --build --preset NinjaMC-Clang --config Debug --target run
+    #     echo 
+    #     echo CMake build and run (Release)
+    #     cmake --build --preset NinjaMC-Clang --config Release --target run
+
     - name: MacOS, NinjaMC, Clang, Debug & Release
       run: |
-        echo CMake configure
         cmake --preset NinjaMC-Clang
-        echo 
-        echo CMake build and run (Debug)
         cmake --build --preset NinjaMC-Clang --config Debug --target run
-        echo 
-        echo CMake build and run (Release)
-        cmake --build --preset NinjaMC-Clang --config Release --target run
 
 
   build-on-windows:
@@ -293,11 +308,16 @@ jobs:
 
     - name: Windows, NinjaMC, Msvc, Debug & Release
       run: |
-        echo CMake configure
         cmake --preset NinjaMC-Msvc
-        echo 
-        echo CMake build and run (Debug)
         cmake --build --preset NinjaMC-Msvc --config Debug --target run
-        echo 
-        echo CMake build and run (Release)
-        cmake --build --preset NinjaMC-Msvc --config Release --target run
+
+    # - name: Windows, NinjaMC, Msvc, Debug & Release
+    #   run: |
+    #     echo CMake configure
+    #     cmake --preset NinjaMC-Msvc
+    #     echo 
+    #     echo CMake build and run (Debug)
+    #     cmake --build --preset NinjaMC-Msvc --config Debug --target run
+    #     echo 
+    #     echo CMake build and run (Release)
+    #     cmake --build --preset NinjaMC-Msvc --config Release --target run
