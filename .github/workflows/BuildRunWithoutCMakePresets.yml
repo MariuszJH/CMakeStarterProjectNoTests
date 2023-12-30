@@ -1,0 +1,310 @@
+name: Build and run without CMakePresets.json
+
+on:
+  push: 
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  singleConfig:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        compilerCpp: 
+          - name: g++
+            buildSubDir: Gnu
+          - name: clang++
+            buildSubDir: Clang
+          - name: cl
+            buildSubDir: Msvc
+        buildType: [Debug, Release]
+        generator: 
+          - name: Ninja
+            buildDir: buildNinja
+          - name: "Unix Makefiles"
+            buildDir: buildMake
+          - name: "NMake Makefiles"
+            buildDir: buildMake
+
+        exclude:
+          - os: ubuntu-latest
+            compilerCpp: 
+              name: cl
+          - os: ubuntu-latest
+            generator: 
+              name: "NMake Makefiles"
+
+          - os: macos-latest
+            compilerCpp: 
+              name: cl
+          - os: macos-latest
+            compilerCpp:
+              name: g++
+          - os: macos-latest
+            generator: 
+              name: "NMake Makefiles"
+
+          - os: windows-latest
+            compilerCpp: 
+              name: g++
+          - os: windows-latest
+            compilerCpp: 
+              name: clang++
+          - os: windows-latest
+            generator: 
+              name: "Unix Makefiles"
+
+    runs-on: ${{matrix.os}}
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+        
+    - name: Install Ninja
+      uses: seanmiddleditch/gha-setup-ninja@master
+
+    - name: Setup MSVC compiler
+      if: ${{matrix.os == 'windows-latest'}}
+      uses: ilammy/msvc-dev-cmd@v1
+
+    - name: MSVC compiler version
+      if: ${{matrix.os == 'windows-latest'}}
+      shell: bash
+      run: |
+        echo cl
+        cl
+
+    - name: Tool versions
+      shell: bash
+      run: | 
+        echo g++ --version
+        g++ --version
+        echo 
+        echo clang++ --version
+        clang++ --version
+        echo 
+        echo cmake --version
+        cmake --version
+        echo 
+        echo ninja --version
+        ninja --version
+
+    - name: Parameter values
+      shell: bash
+      run: | 
+        echo platform = ${{runner.os}}
+        echo generator = ${{matrix.generator.name}}
+        echo buildType = ${{matrix.buildType}}
+        echo compiler = ${{matrix.compilerCpp.name}}
+
+    - name: CMake configure
+      run: > 
+        cmake -S . 
+        -B ${{matrix.generator.buildDir}}/${{matrix.compilerCpp.buildSubDir}} 
+        -G "${{matrix.generator.name}}" 
+        -D CMAKE_BUILD_TYPE=${{matrix.buildType}} 
+        -D CMAKE_CXX_COMPILER=${{matrix.compilerCpp.name}}
+      
+    - name: CMake build
+      run: > 
+        cmake 
+        --build ${{matrix.generator.buildDir}}/${{matrix.compilerCpp.buildSubDir}} 
+        -j8
+
+    - name: CMake run
+      run: > 
+        cmake 
+        --build ${{matrix.generator.buildDir}}/${{matrix.compilerCpp.buildSubDir}} 
+        -j8 
+        --target run
+
+
+  multiConfig:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        compilerCpp: 
+          - name: g++
+            buildSubDir: Gnu
+          - name: clang++
+            buildSubDir: Clang
+          - name: cl
+            buildSubDir: Msvc
+        buildType: [Debug, Release]
+        generator: 
+          - name: "Ninja Multi-Config"
+            buildDir: buildNinjaMC
+          - name: Xcode
+            buildDir: buildXcode
+
+        exclude:
+          - os: ubuntu-latest
+            compilerCpp: 
+              name: cl
+          - os: ubuntu-latest
+            generator: 
+              name: Xcode
+
+          - os: macos-latest
+            compilerCpp: 
+              name: cl
+          - os: macos-latest
+            compilerCpp:
+              name: g++
+
+          - os: windows-latest
+            compilerCpp: 
+              name: g++
+          - os: windows-latest
+            compilerCpp: 
+              name: clang++
+          - os: windows-latest
+            generator: 
+              name: Xcode
+
+    runs-on: ${{matrix.os}}
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Install Ninja
+      uses: seanmiddleditch/gha-setup-ninja@master
+
+    - name: Setup MSVC compiler
+      if: ${{matrix.os == 'windows-latest'}}
+      uses: ilammy/msvc-dev-cmd@v1
+
+    - name: MSVC compiler version
+      if: ${{matrix.os == 'windows-latest'}}
+      shell: bash
+      run: |
+        echo cl
+        cl
+
+    - name: Tool versions
+      shell: bash
+      run: | 
+        echo g++ --version
+        g++ --version
+        echo 
+        echo clang++ --version
+        clang++ --version
+        echo 
+        echo cmake --version
+        cmake --version
+        echo 
+        echo ninja --version
+        ninja --version
+
+    - name: Parameter values
+      shell: bash
+      run: | 
+        echo platform = ${{runner.os}}
+        echo generator = ${{matrix.generator.name}}
+        echo buildType = ${{matrix.buildType}}
+        echo compiler = ${{matrix.compilerCpp.name}}
+
+    - name: Parameter values
+      shell: bash
+      run: | 
+        echo platform = ${{runner.os}}
+        echo generator = ${{matrix.generator.name}}
+        echo buildType = ${{matrix.buildType}}
+        echo compiler = ${{matrix.compilerCpp.name}}
+
+    - name: CMake configure
+      run: > 
+        cmake -S . 
+        -B ${{matrix.generator.buildDir}}/${{matrix.compilerCpp.buildSubDir}} 
+        -G "${{matrix.generator.name}}" 
+        -D CMAKE_CXX_COMPILER=${{matrix.compilerCpp.name}}
+      
+    - name: CMake build
+      run: > 
+        cmake 
+        --build ${{matrix.generator.buildDir}}/${{matrix.compilerCpp.buildSubDir}} 
+        -j8
+        --config ${{matrix.buildType}}
+
+    - name: CMake run
+      run: > 
+        cmake 
+        --build ${{matrix.generator.buildDir}}/${{matrix.compilerCpp.buildSubDir}} 
+        -j8 
+        --config ${{matrix.buildType}}
+        --target run
+
+
+  multiArchitecture:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+        compilerCpp: 
+          - name: cl
+            buildSubDir: Msvc
+        buildType: [Debug, Release]
+        generator: 
+          - name: Visual Studio 17 2022
+            buildDir: buildVS
+        architecture:
+          - name: win32
+            buildSubDir: x32
+          - name: x64
+            buildSubDir: x64
+
+    runs-on: ${{matrix.os}}
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Setup MSVC compiler
+      uses: ilammy/msvc-dev-cmd@v1
+
+    - name: MSVC compiler version
+      shell: bash
+      run: |
+        echo cl
+        cl
+
+    - name: Tool versions
+      shell: bash
+      run: | 
+        echo cmake --version
+        cmake --version
+
+    - name: Parameter values
+      shell: bash
+      run: | 
+        echo platform = ${{runner.os}}
+        echo architecture = ${{matrix.compilerCpp.architecture.name}}
+        echo generator = ${{matrix.generator.name}}
+        echo buildType = ${{matrix.buildType}}
+        echo compiler = ${{matrix.compilerCpp.name}}
+
+    - name: CMake configure
+      run: > 
+        cmake -S . 
+        -B ${{matrix.generator.buildDir}}/${{matrix.architecture.buildSubDir}}/${{matrix.compilerCpp.buildSubDir}} 
+        -G "${{matrix.generator.name}}" 
+        -A ${{matrix.architecture.name}}
+      
+    - name: CMake build
+      run: > 
+        cmake 
+        --build ${{matrix.generator.buildDir}}/${{matrix.architecture.buildSubDir}}/${{matrix.compilerCpp.buildSubDir}} 
+        -j8 
+        --config ${{matrix.buildType}}
+
+    - name: CMake run
+      run: > 
+        cmake 
+        --build ${{matrix.generator.buildDir}}/${{matrix.architecture.buildSubDir}}/${{matrix.compilerCpp.buildSubDir}} 
+        -j8 
+        --config ${{matrix.buildType}}
+        --target run

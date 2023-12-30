@@ -32,7 +32,7 @@ jobs:
         echo ninja --version
         ninja --version
 
-    - name: Linux, Make, Gnu, Debug
+    - name: CMake build and run --- Make, Gnu, Debug
       run: |
         echo CMake configure
         cmake --preset Make-Gnu-Debug
@@ -43,7 +43,7 @@ jobs:
         echo CMake run
         cmake --build --preset Make-Gnu-Debug --target run
 
-    - name: Linux, Make, Gnu, Release
+    - name: CMake build and run --- Make, Gnu, Release
       run: |
         echo CMake configure
         cmake --preset Make-Gnu-Release
@@ -54,7 +54,7 @@ jobs:
         echo CMake run
         cmake --build --preset Make-Gnu-Release --target run
 
-    - name: Linux, Make, Clang, Debug
+    - name: CMake build and run --- Make, Clang, Debug
       run: |
         echo CMake configure
         cmake --preset Make-Clang-Debug
@@ -65,7 +65,7 @@ jobs:
         echo CMake run
         cmake --build --preset Make-Clang-Debug --target run
 
-    - name: Linux, Make, Clang, Release
+    - name: CMake build and run --- Make, Clang, Release
       run: |
         echo CMake configure
         cmake --preset Make-Clang-Release
@@ -76,7 +76,7 @@ jobs:
         echo CMake run
         cmake --build --preset Make-Clang-Release --target run
 
-    - name: Linux, Ninja, Gnu, Debug
+    - name: CMake build and run --- Ninja, Gnu, Debug
       run: |
         echo CMake configure
         cmake --preset Ninja-Gnu-Debug
@@ -87,7 +87,7 @@ jobs:
         echo CMake run
         cmake --build --preset Ninja-Gnu-Debug --target run
 
-    - name: Linux, Ninja, Gnu, Release
+    - name: CMake build and run --- Ninja, Gnu, Release
       run: |
         echo CMake configure
         cmake --preset Ninja-Gnu-Release
@@ -98,7 +98,7 @@ jobs:
         echo CMake run
         cmake --build --preset Ninja-Gnu-Release --target run
 
-    - name: Linux, Ninja, Clang, Debug
+    - name: CMake build and run --- Ninja, Clang, Debug
       run: |
         echo CMake configure
         cmake --preset Ninja-Clang-Debug
@@ -109,7 +109,7 @@ jobs:
         echo CMake run
         cmake --build --preset Ninja-Clang-Debug --target run
 
-    - name: Linux, Ninja, Clang, Release
+    - name: CMake build and run --- Ninja, Clang, Release
       run: |
         echo CMake configure
         cmake --preset Ninja-Clang-Release
@@ -120,19 +120,19 @@ jobs:
         echo CMake run
         cmake --build --preset Ninja-Clang-Release --target run
 
-    - name: Linux, NinjaMC, Gnu, Debug & Release
+    - name: CMake build and run --- NinjaMC, Gnu, Debug & Release
       run: |
         cmake --preset NinjaMC-Gnu
         cmake --build --preset NinjaMC-Gnu --config Debug --target run
         cmake --build --preset NinjaMC-Gnu --config Release --target run
 
-    - name: Linux, NinjaMC, Clang, Debug & Release
+    - name: CMake build and run --- NinjaMC, Clang, Debug & Release
       run: |
         cmake --preset NinjaMC-Clang
         cmake --build --preset NinjaMC-Clang --config Debug --target run
         cmake --build --preset NinjaMC-Clang --config Release --target run
 
-    # - name: Linux, NinjaMC, Gnu, Debug & Release
+    # - name: CMake build and run --- NinjaMC, Gnu, Debug & Release
     #   run: |
     #     echo CMake configure
     #     cmake --preset NinjaMC-Gnu
@@ -148,7 +148,7 @@ jobs:
     #     cmake --build --preset NinjaMC-Gnu --config Release --target run
 
 
-    # - name: Linux, NinjaMC, Clang, Debug & Release
+    # - name: CMake build and run --- NinjaMC, Clang, Debug & Release
     #   run: |
     #     echo CMake configure
     #     cmake --preset NinjaMC-Clang
@@ -184,7 +184,7 @@ jobs:
         echo ninja --version
         ninja --version
 
-    - name: MacOS, Make, Clang, Debug
+    - name: CMake build and run --- Make, Clang, Debug
       run: |
         echo CMake configure
         cmake --preset Make-Clang-Debug
@@ -195,7 +195,7 @@ jobs:
         echo CMake run
         cmake --build --preset Make-Clang-Debug --target run
 
-    - name: MacOS, Make, Clang, Release
+    - name: CMake build and run --- Make, Clang, Release
       run: |
         echo CMake configure
         cmake --preset Make-Clang-Release
@@ -206,7 +206,7 @@ jobs:
         echo CMake run
         cmake --build --preset Make-Clang-Release --target run
 
-    - name: MacOS, Ninja, Clang, Debug
+    - name: CMake build and run --- Ninja, Clang, Debug
       run: |
         echo CMake configure
         cmake --preset Ninja-Clang-Debug
@@ -217,7 +217,7 @@ jobs:
         echo CMake run
         cmake --build --preset Ninja-Clang-Debug --target run
 
-    - name: MacOS, Ninja, Clang, Release
+    - name: CMake build and run --- Ninja, Clang, Release
       run: |
         echo CMake configure
         cmake --preset Ninja-Clang-Release
@@ -228,7 +228,7 @@ jobs:
         echo CMake run
         cmake --build --preset Ninja-Clang-Release --target run
 
-    # - name: MacOS, NinjaMC, Clang, Debug & Release
+    # - name: CMake build and run --- NinjaMC, Clang, Debug & Release
     #   run: |
     #     echo CMake configure
     #     cmake --preset NinjaMC-Clang
@@ -239,7 +239,7 @@ jobs:
     #     echo CMake build and run (Release)
     #     cmake --build --preset NinjaMC-Clang --config Release --target run
 
-    - name: MacOS, NinjaMC, Clang, Debug & Release
+    - name: CMake build and run --- NinjaMC, Clang, Debug & Release
       run: |
         cmake --preset NinjaMC-Clang
         cmake --build --preset NinjaMC-Clang --config Debug --target run
@@ -270,7 +270,7 @@ jobs:
         echo ninja --version
         ninja --version
 
-    - name: Windows, NMake, Msvc, Debug
+    - name: CMake build and run --- NMake, Msvc, Debug
       shell: bash
       run: |
         echo CMake configure
@@ -282,7 +282,7 @@ jobs:
         echo CMake run
         cmake --build --preset NMake-Msvc-Debug --target run
 
-    - name: Windows, NMake, Msvc, Release
+    - name: CMake build and run --- NMake, Msvc, Release
       shell: bash
       run: |
         echo CMake configure
@@ -294,7 +294,7 @@ jobs:
         echo CMake run
         cmake --build --preset NMake-Msvc-Release --target run
 
-    - name: Windows, Ninja, Msvc, Debug
+    - name: CMake build and run --- Ninja, Msvc, Debug
       shell: bash
       run: |
         echo CMake configure
@@ -306,7 +306,7 @@ jobs:
         echo CMake run
         cmake --build --preset Ninja-Msvc-Debug --target run
 
-    - name: Windows, Ninja, Msvc, Release
+    - name: CMake build and run --- Ninja, Msvc, Release
       shell: bash
       run: |
         echo CMake configure
@@ -318,13 +318,13 @@ jobs:
         echo CMake run
         cmake --build --preset Ninja-Msvc-Release --target run
 
-    - name: Windows, NinjaMC, Msvc, Debug & Release
+    - name: CMake build and run --- NinjaMC, Msvc, Debug & Release
       run: |
         cmake --preset NinjaMC-Msvc
         cmake --build --preset NinjaMC-Msvc --config Debug --target run
         cmake --build --preset NinjaMC-Msvc --config Release --target run
 
-    # - name: Windows, NinjaMC, Msvc, Debug & Release
+    # - name: CMake build and run --- NinjaMC, Msvc, Debug & Release
       # shell: bash
     #   run: |
     #     echo CMake configure
