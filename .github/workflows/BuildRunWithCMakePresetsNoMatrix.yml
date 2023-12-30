@@ -122,11 +122,8 @@ jobs:
 
     - name: CMake build and run --- NinjaMC, Gnu, Debug & Release
       run: |
-        echo CMake configure
         cmake --preset NinjaMC-Gnu
-        echo CMake build (debug) and run
         cmake --build --preset NinjaMC-Gnu --config Debug --target run
-        echo CMake build (release) and run
         cmake --build --preset NinjaMC-Gnu --config Release --target run
 
     - name: CMake build and run --- NinjaMC, Clang, Debug & Release
@@ -330,11 +327,8 @@ jobs:
     - name: CMake build and run --- NinjaMC, Msvc, Debug & Release
       shell: bash
       run: |
-        echo CMake configure
         cmake --preset NinjaMC-Msvc
-        echo CMake build (debug) and run
         cmake --build --preset NinjaMC-Msvc --config Debug --target run
-        echo CMake build (release) and run
         cmake --build --preset NinjaMC-Msvc --config Release --target run
 
     # - name: CMake build and run --- NinjaMC, Msvc, Debug & Release
