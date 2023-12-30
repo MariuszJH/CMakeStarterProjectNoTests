@@ -120,6 +120,11 @@ jobs:
         -j8 
         --target run
 
+    - name: Archive build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: Binaries in buildOut subdirectory
+        path: ${{matrix.generator.buildDir}}/${{matrix.compilerCpp.buildSubDir}}/buildOut
 
   multiConfig:
     strategy:
@@ -238,6 +243,12 @@ jobs:
         --config ${{matrix.buildType}}
         --target run
 
+    - name: Archive build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: Binaries in buildOut subdirectory
+        path: ${{matrix.generator.buildDir}}/${{matrix.compilerCpp.buildSubDir}}/buildOut
+
 
   multiArchitecture:
     strategy:
@@ -308,3 +319,9 @@ jobs:
         -j8 
         --config ${{matrix.buildType}}
         --target run
+
+    - name: Archive build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: Binaries in buildOut subdirectory
+        path: ${{matrix.generator.buildDir}}/${{matrix.architecture.buildSubDir}}/${{matrix.compilerCpp.buildSubDir}}/buildOut
