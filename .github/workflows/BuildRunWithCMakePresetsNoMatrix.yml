@@ -167,7 +167,7 @@ jobs:
         cmake --preset NinjaMC-Gnu
         
         echo 
-        echo "~~~ CMake build (debug)~~~"
+        echo "~~~ CMake build (debug) ~~~"
         echo cmake --build --preset NinjaMC-Gnu --config Debug
         cmake --build --preset NinjaMC-Gnu --config Debug
         
