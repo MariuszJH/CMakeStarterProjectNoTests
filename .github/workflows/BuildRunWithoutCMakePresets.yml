@@ -123,7 +123,7 @@ jobs:
     - name: Archive build artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: Binaries in buildOut subdirectory
+        name: Binaries_${{matrix.generator.buildDir}}_${{matrix.compilerCpp.buildSubDir}}
         path: ${{matrix.generator.buildDir}}/${{matrix.compilerCpp.buildSubDir}}/buildOut
 
   multiConfig:
@@ -246,7 +246,7 @@ jobs:
     - name: Archive build artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: Binaries in buildOut subdirectory
+        name: Binaries_${{matrix.generator.buildDir}}_${{matrix.compilerCpp.buildSubDir}}
         path: ${{matrix.generator.buildDir}}/${{matrix.compilerCpp.buildSubDir}}/buildOut
 
 
@@ -323,5 +323,5 @@ jobs:
     - name: Archive build artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: Binaries in buildOut subdirectory
+        name: Binaries_${{matrix.generator.buildDir}}_${{matrix.architecture.buildSubDir}}_${{matrix.compilerCpp.buildSubDir}}
         path: ${{matrix.generator.buildDir}}/${{matrix.architecture.buildSubDir}}/${{matrix.compilerCpp.buildSubDir}}/buildOut
