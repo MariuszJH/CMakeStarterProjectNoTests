@@ -34,128 +34,172 @@ jobs:
 
     - name: CMake build and run --- Make, Gnu, Debug
       run: |
-        echo CMake configure
+        echo ~~~ CMake configure ~~~
+        echo cmake --preset Make-Gnu-Debug
         cmake --preset Make-Gnu-Debug
+
         echo 
-        echo CMake build
+        echo ~~~ CMake build ~~~
+        echo cmake --build --preset Make-Gnu-Debug
         cmake --build --preset Make-Gnu-Debug
+
         echo 
-        echo CMake run
+        echo ~~~ CMake run ~~~
+        echo cmake --build --preset Make-Gnu-Debug --target run
         cmake --build --preset Make-Gnu-Debug --target run
 
     - name: CMake build and run --- Make, Gnu, Release
       run: |
-        echo CMake configure
+        echo ~~~ CMake configure ~~~
+        echo cmake --preset Make-Gnu-Release
         cmake --preset Make-Gnu-Release
+
         echo 
-        echo CMake build
+        echo ~~~ CMake build ~~~
+        echo cmake --build --preset Make-Gnu-Release
         cmake --build --preset Make-Gnu-Release
+
         echo 
-        echo CMake run
+        echo ~~~ CMake run ~~~
+        echo cmake --build --preset Make-Gnu-Release --target run
         cmake --build --preset Make-Gnu-Release --target run
 
     - name: CMake build and run --- Make, Clang, Debug
       run: |
-        echo CMake configure
+        echo ~~~ CMake configure ~~~
+        echo cmake --preset Make-Clang-Debug
         cmake --preset Make-Clang-Debug
+
         echo 
-        echo CMake build
+        echo ~~~ CMake build ~~~
+        echo cmake --build --preset Make-Clang-Debug
         cmake --build --preset Make-Clang-Debug
+
         echo 
-        echo CMake run
+        echo ~~~ CMake run ~~~
+        echo cmake --build --preset Make-Clang-Debug --target run
         cmake --build --preset Make-Clang-Debug --target run
 
     - name: CMake build and run --- Make, Clang, Release
       run: |
-        echo CMake configure
+        echo ~~~ CMake configure ~~~
+        echo cmake --preset Make-Clang-Release
         cmake --preset Make-Clang-Release
+
         echo 
-        echo CMake build
+        echo ~~~ CMake build ~~~
+        echo cmake --build --preset Make-Clang-Release
         cmake --build --preset Make-Clang-Release
+
         echo 
-        echo CMake run
+        echo ~~~ CMake run ~~~
+        echo cmake --build --preset Make-Clang-Release --target run
         cmake --build --preset Make-Clang-Release --target run
 
     - name: CMake build and run --- Ninja, Gnu, Debug
       run: |
-        echo CMake configure
+        echo ~~~ CMake configure ~~~
+        echo cmake --preset Ninja-Gnu-Debug
         cmake --preset Ninja-Gnu-Debug
+
         echo 
-        echo CMake build
+        echo ~~~ CMake build ~~~
+        echo cmake --build --preset Ninja-Gnu-Debug
         cmake --build --preset Ninja-Gnu-Debug
+
         echo 
-        echo CMake run
+        echo ~~~ CMake run ~~~
+        echo cmake --build --preset Ninja-Gnu-Debug --target run
         cmake --build --preset Ninja-Gnu-Debug --target run
 
     - name: CMake build and run --- Ninja, Gnu, Release
       run: |
-        echo CMake configure
+        echo ~~~ CMake configure ~~~
+        echo cmake --preset Ninja-Gnu-Release
         cmake --preset Ninja-Gnu-Release
+
         echo 
-        echo CMake build
+        echo ~~~ CMake build ~~~
+        echo cmake --build --preset Ninja-Gnu-Release
         cmake --build --preset Ninja-Gnu-Release
+
         echo 
-        echo CMake run
+        echo ~~~ CMake run ~~~
+        echo cmake --build --preset Ninja-Gnu-Release --target run
         cmake --build --preset Ninja-Gnu-Release --target run
 
     - name: CMake build and run --- Ninja, Clang, Debug
       run: |
-        echo CMake configure
+        echo ~~~ CMake configure ~~~
+        echo cmake --preset Ninja-Clang-Debug
         cmake --preset Ninja-Clang-Debug
+
         echo 
-        echo CMake build
+        echo ~~~ CMake build ~~~
+        echo cmake --build --preset Ninja-Clang-Debug
         cmake --build --preset Ninja-Clang-Debug
+
         echo 
-        echo CMake run
+        echo ~~~ CMake run ~~~
+        echo cmake --build --preset Ninja-Clang-Debug --target run
         cmake --build --preset Ninja-Clang-Debug --target run
 
     - name: CMake build and run --- Ninja, Clang, Release
       run: |
-        echo CMake configure
+        echo ~~~ CMake configure ~~~
+        echo cmake --preset Ninja-Clang-Release
         cmake --preset Ninja-Clang-Release
+
         echo 
-        echo CMake build
+        echo ~~~ CMake build ~~~
+        echo cmake --build --preset Ninja-Clang-Release
         cmake --build --preset Ninja-Clang-Release
+
         echo 
-        echo CMake run
+        echo ~~~ CMake run ~~~
+        echo cmake --build --preset Ninja-Clang-Release --target run
         cmake --build --preset Ninja-Clang-Release --target run
 
     - name: CMake build and run --- NinjaMC, Gnu, Debug & Release
       run: |
         echo "~~~ CMake configure ~~~"
         echo cmake --preset NinjaMC-Gnu
-
         cmake --preset NinjaMC-Gnu
         
-        echo ""
-        echo "~~~ CMake build (debug) and run ~~~"
-        echo cmake --build --preset NinjaMC-Gnu --config Debug --target run
+        echo 
+        echo "~~~ CMake build (debug)~~~"
+        echo cmake --build --preset NinjaMC-Gnu --config Debug
+        cmake --build --preset NinjaMC-Gnu --config Debug
         
+        echo 
+        echo "~~~ CMake run (debug) ~~~"
+        echo cmake --build --preset NinjaMC-Gnu --config Debug --target run
         cmake --build --preset NinjaMC-Gnu --config Debug --target run
         
-        echo ""
-        echo "~~~ CMake build (release) and run ~~~"
-        echo cmake --build --preset NinjaMC-Gnu --config Release --target run
+        echo 
+        echo "~~~ CMake build (release) ~~~"
+        echo cmake --build --preset NinjaMC-Gnu --config Release
+        cmake --build --preset NinjaMC-Gnu --config Release
         
+        echo 
+        echo "~~~ CMake build run (release) ~~~"
+        echo cmake --build --preset NinjaMC-Gnu --config Release --target run
         cmake --build --preset NinjaMC-Gnu --config Release --target run
 
     - name: CMake build and run --- NinjaMC, Clang, Debug & Release
       run: |
         echo "~~~ CMake configure ~~~"
         echo cmake --preset NinjaMC-Clang
-
         cmake --preset NinjaMC-Clang
         
-        echo ""
+        echo 
         echo "~~~ CMake build (debug) and run ~~~"
         echo cmake --build --preset NinjaMC-Clang --config Debug --target run
-
         cmake --build --preset NinjaMC-Clang --config Debug --target run
         
-        echo ""
+        echo 
         echo "~~~ CMake build (release) and run ~~~"
         echo cmake --build --preset NinjaMC-Clang --config Release --target run
-
         cmake --build --preset NinjaMC-Clang --config Release --target run
 
 
@@ -185,84 +229,98 @@ jobs:
 
     - name: CMake build and run --- Make, Clang, Debug
       run: |
-        echo CMake configure
+        echo ~~~ CMake configure ~~~
+        echo cmake --preset Make-Clang-Debug
         cmake --preset Make-Clang-Debug
+
         echo 
-        echo CMake build
+        echo ~~~ CMake build ~~~
+        echo cmake --build --preset Make-Clang-Debug
         cmake --build --preset Make-Clang-Debug
+
         echo 
-        echo CMake run
+        echo ~~~ CMake run ~~~
+        echo cmake --build --preset Make-Clang-Debug --target run
         cmake --build --preset Make-Clang-Debug --target run
 
     - name: CMake build and run --- Make, Clang, Release
       run: |
-        echo CMake configure
+        echo ~~~ CMake configure ~~~
+        echo cmake --preset Make-Clang-Release
         cmake --preset Make-Clang-Release
+
         echo 
-        echo CMake build
+        echo ~~~ CMake build ~~~
+        echo cmake --build --preset Make-Clang-Release
         cmake --build --preset Make-Clang-Release
+
         echo 
-        echo CMake run
+        echo ~~~ CMake run ~~~
+        echo cmake --build --preset Make-Clang-Release --target run
         cmake --build --preset Make-Clang-Release --target run
 
     - name: CMake build and run --- Ninja, Clang, Debug
       run: |
-        echo CMake configure
+        echo ~~~ CMake configure ~~~
+        echo cmake --preset Ninja-Clang-Debug
         cmake --preset Ninja-Clang-Debug
+
         echo 
-        echo CMake build
+        echo ~~~ CMake build ~~~
+        echo cmake --build --preset Ninja-Clang-Debug
         cmake --build --preset Ninja-Clang-Debug
+
         echo 
-        echo CMake run
+        echo ~~~ CMake run ~~~
+        echo cmake --build --preset Ninja-Clang-Debug --target run
         cmake --build --preset Ninja-Clang-Debug --target run
 
     - name: CMake build and run --- Ninja, Clang, Release
       run: |
-        echo CMake configure
+        echo ~~~ CMake configure ~~~
+        echo cmake --preset Ninja-Clang-Release
         cmake --preset Ninja-Clang-Release
+
         echo 
-        echo CMake build
+        echo ~~~ CMake build ~~~
+        echo cmake --build --preset Ninja-Clang-Release
         cmake --build --preset Ninja-Clang-Release
+
         echo 
-        echo CMake run
+        echo ~~~ CMake run ~~~
+        echo cmake --build --preset Ninja-Clang-Release --target run
         cmake --build --preset Ninja-Clang-Release --target run
 
     - name: CMake build and run --- NinjaMC, Clang, Debug & Release
       run: |
         echo "~~~ CMake configure ~~~"
         echo cmake --preset NinjaMC-Clang
-
         cmake --preset NinjaMC-Clang
         
-        echo ""
+        echo 
         echo "~~~ CMake build (debug) and run ~~~"
         echo cmake --build --preset NinjaMC-Clang --config Debug --target run
-
         cmake --build --preset NinjaMC-Clang --config Debug --target run
         
-        echo ""
+        echo 
         echo "~~~ CMake build (release) and run ~~~"
         echo cmake --build --preset NinjaMC-Clang --config Release --target run
-        
         cmake --build --preset NinjaMC-Clang --config Release --target run
 
     - name: CMake build and run --- Xcode, Clang, Debug & Release
       run: |
         echo "~~~ CMake configure ~~~"
         echo cmake --preset Xcode-Clang
-
         cmake --preset Xcode-Clang
         
-        echo ""
+        echo 
         echo "~~~ CMake build (debug) and run ~~~"
         echo cmake --build --preset Xcode-Clang --config Debug --target run
-
         cmake --build --preset Xcode-Clang --config Debug --target run
         
-        echo ""
+        echo 
         echo "~~~ CMake build (release) and run ~~~"
         echo cmake --build --preset Xcode-Clang --config Release --target run
-
         cmake --build --preset Xcode-Clang --config Release --target run
 
 
@@ -293,49 +351,69 @@ jobs:
     - name: CMake build and run --- NMake, Msvc, Debug
       shell: bash
       run: |
-        echo CMake configure
+        echo ~~~ CMake configure ~~~
+        echo cmake --preset NMake-Msvc-Debug
         cmake --preset NMake-Msvc-Debug
+
         echo 
-        echo CMake build
+        echo ~~~ CMake build ~~~
+        echo cmake --build --preset NMake-Msvc-Debug
         cmake --build --preset NMake-Msvc-Debug
+
         echo 
-        echo CMake run
+        echo ~~~ CMake run ~~~
+        echo cmake --build --preset NMake-Msvc-Debug --target run
         cmake --build --preset NMake-Msvc-Debug --target run
 
     - name: CMake build and run --- NMake, Msvc, Release
       shell: bash
       run: |
-        echo CMake configure
+        echo ~~~ CMake configure ~~~
+        echo cmake --preset NMake-Msvc-Release
         cmake --preset NMake-Msvc-Release
+
         echo 
-        echo CMake build
+        echo ~~~ CMake build ~~~
+        echo cmake --build --preset NMake-Msvc-Release
         cmake --build --preset NMake-Msvc-Release
+
         echo 
-        echo CMake run
+        echo ~~~ CMake run ~~~
+        echo cmake --build --preset NMake-Msvc-Release --target run
         cmake --build --preset NMake-Msvc-Release --target run
 
     - name: CMake build and run --- Ninja, Msvc, Debug
       shell: bash
       run: |
-        echo CMake configure
+        echo ~~~ CMake configure ~~~
+        echo cmake --preset Ninja-Msvc-Debug
         cmake --preset Ninja-Msvc-Debug
+
         echo 
-        echo CMake build
+        echo ~~~ CMake build ~~~
+        echo cmake --build --preset Ninja-Msvc-Debug
         cmake --build --preset Ninja-Msvc-Debug
+
         echo 
-        echo CMake run
+        echo ~~~ CMake run ~~~
+        echo cmake --build --preset Ninja-Msvc-Debug --target run
         cmake --build --preset Ninja-Msvc-Debug --target run
 
     - name: CMake build and run --- Ninja, Msvc, Release
       shell: bash
       run: |
-        echo CMake configure
+        echo ~~~ CMake configure ~~~
+        echo cmake --preset Ninja-Msvc-Release
         cmake --preset Ninja-Msvc-Release
+
         echo 
-        echo CMake build
+        echo ~~~ CMake build ~~~
+        echo cmake --build --preset Ninja-Msvc-Release
         cmake --build --preset Ninja-Msvc-Release
+
         echo 
-        echo CMake run
+        echo ~~~ CMake run ~~~
+        echo cmake --build --preset Ninja-Msvc-Release --target run
         cmake --build --preset Ninja-Msvc-Release --target run
 
     - name: CMake build and run --- NinjaMC, Msvc, Debug & Release
@@ -343,19 +421,16 @@ jobs:
       run: |
         echo "~~~ CMake configure ~~~"
         echo cmake --preset NinjaMC-Msvc
-
         cmake --preset NinjaMC-Msvc
         
-        echo ""
+        echo 
         echo "~~~ CMake build (debug) and run ~~~"
         echo cmake --build --preset NinjaMC-Msvc --config Debug --target run
-
         cmake --build --preset NinjaMC-Msvc --config Debug --target run
         
-        echo ""
+        echo 
         echo "~~~ CMake build (release) and run ~~~"
         echo cmake --build --preset NinjaMC-Msvc --config Release --target run
-
         cmake --build --preset NinjaMC-Msvc --config Release --target run
 
     - name: CMake build and run --- VSx32, Msvc, Debug & Release
@@ -363,19 +438,16 @@ jobs:
       run: |
         echo "~~~ CMake configure ~~~"
         echo cmake --preset VSx32-Msvc
-
         cmake --preset VSx32-Msvc
 
-        echo ""
+        echo 
         echo "~~~ CMake build (debug) and run ~~~"
         echo cmake --build --preset VSx32-Msvc --config Debug --target run
-
         cmake --build --preset VSx32-Msvc --config Debug --target run
         
-        echo ""
+        echo 
         echo "~~~ CMake build (release) and run ~~~"
         echo cmake --build --preset VSx32-Msvc --config Release --target run
-
         cmake --build --preset VSx32-Msvc --config Release --target run
 
     - name: CMake build and run --- VSx64, Msvc, Debug & Release
@@ -383,17 +455,14 @@ jobs:
       run: |
         echo "~~~ CMake configure ~~~"
         echo cmake --preset VSx64-Msvc
-
         cmake --preset VSx64-Msvc
         
-        echo ""
+        echo 
         echo "~~~ CMake build (debug) and run ~~~"
         echo cmake --build --preset VSx64-Msvc --config Debug --target run
-
         cmake --build --preset VSx64-Msvc --config Debug --target run
         
-        echo ""
+        echo 
         echo "~~~ CMake build (release) and run ~~~"
         echo cmake --build --preset VSx64-Msvc --config Release --target run
-        
         cmake --build --preset VSx64-Msvc --config Release --target run
