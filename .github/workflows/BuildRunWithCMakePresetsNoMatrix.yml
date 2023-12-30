@@ -122,11 +122,11 @@ jobs:
 
     - name: CMake build and run --- NinjaMC, Gnu, Debug & Release
       run: |
-        echo CMake configure
+        echo "CMake configure"
         cmake --preset NinjaMC-Gnu
-        echo CMake build (debug) and run
+        echo "CMake build (debug) and run"
         cmake --build --preset NinjaMC-Gnu --config Debug --target run
-        echo CMake build (release) and run
+        echo "CMake build (release) and run"
         cmake --build --preset NinjaMC-Gnu --config Release --target run
 
     - name: CMake build and run --- NinjaMC, Clang, Debug & Release
@@ -249,13 +249,18 @@ jobs:
       run: |
         echo "CMake configure"
         cmake --preset NinjaMC-Clang
+        echo "CMake build (debug) and run"
         cmake --build --preset NinjaMC-Clang --config Debug --target run
+        echo "CMake build (release) and run"
         cmake --build --preset NinjaMC-Clang --config Release --target run
 
     - name: CMake build and run --- Xcode, Clang, Debug & Release
       run: |
+        echo "CMake configure"
         cmake --preset Xcode-Clang
+        echo "CMake build (debug) and run"
         cmake --build --preset Xcode-Clang --config Debug --target run
+        echo "CMake build (release) and run"
         cmake --build --preset Xcode-Clang --config Release --target run
 
 
@@ -336,7 +341,9 @@ jobs:
       run: |
         echo "CMake configure"
         cmake --preset NinjaMC-Msvc
+        echo "CMake build (debug) and run"
         cmake --build --preset NinjaMC-Msvc --config Debug --target run
+        echo "CMake build (release) and run"
         cmake --build --preset NinjaMC-Msvc --config Release --target run
 
     # - name: CMake build and run --- NinjaMC, Msvc, Debug & Release
@@ -354,8 +361,11 @@ jobs:
     - name: CMake build and run --- VSx32, Msvc, Debug & Release
       shell: bash
       run: |
+        echo "CMake configure"
         cmake --preset VSx32-Msvc
+        echo "CMake build (debug) and run"
         cmake --build --preset VSx32-Msvc --config Debug --target run
+        echo "CMake build (release) and run"
         cmake --build --preset VSx32-Msvc --config Release --target run
 
     - name: CMake build and run --- VSx64, Msvc, Debug & Release
